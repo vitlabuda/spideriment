@@ -1,0 +1,35 @@
+--- Spideriment web index file specification ---
+
+
+The web index file is a CSV of JSON objects (each CSV entry is a JSON object).*
+Its save location is specified by the Settings.WEB_INDEX_FILE property in the Settings.py file.
+
+
+Each JSON object represents a single crawled webpage and consists of the following properties:
+    "original_url" (string)                     = the original URL which was navigated to when crawling the webpage
+    "final_url" (string)                        = the final URL of the webpage (differs from original_url, if the request was redirected)
+    "original_canonical_url" (string)           = the original URL in its canonical form
+    "final_canonical_url" (string)              = the final URL in its canonical form
+    "crawl_timestamp" (int)                     = the Unix (epoch) timestamp when the webpage was crawled
+
+    "language" (string)                         = a short string describing the language of the webpage (e.g. en, en-US, cs, cs-CZ, ...; <html lang> - might be invalid)
+    "title" (string)                            = the webpage's title (the contents of the <title> HTML element)
+    "headings" (object of arrays of strings)    = the webpage's headings (<h1>, <h2>, ...); saved as a object whose keys signify what the level was (e.g. h1); its values are arrays of the headings' texts
+    "description" (string)                      = the webpage's description (<meta name="description">)
+    "keywords" (string)                         = the webpage's keywords (<meta name="keywords">)
+    "author" (string)                           = the webpage's author (<meta name="author">)
+    "content_snippet" (string)                  = a snippet from the webpage's content
+    "content_snippet_quality" (float)           = a float value between 0.0 and 1.0 determining how relevant the content_snippet is (may be used when ranking the results in a search engine)
+    "image_alts" (string)                       = whitespace-concatenated alts of the webpage's <img> elements (may be used as an additional ranking factor)
+    "link_texts" (string)                       = whitespace-concatenated texts of the webpage's links (<a href> elements; may be used as an additional ranking factor)
+
+    "total_links_count" (int)                   = the total number of links found on the webpage (may be used as an additional ranking factor)
+
+
+The strings (title, content snippet etc.) might be empty and are cut, if they are too long (the last word of the metadata might be "cut in half").
+The length limits are specified in the Settings.py file.
+
+
+
+* The web index is not saved as a single JSON array, because it can get very huge and JSON isn't easily parsable/appendable without having it loaded entirely in the memory.
+  The JSON objects are wrapped in CSV due to the possibility of them containing newline characters (which makes simply saving one JSON object per line without the CSV wrapping impossible).
