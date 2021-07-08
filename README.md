@@ -30,7 +30,7 @@ The author is not liable for any damage and legal issues caused by this program 
    * **Linux**
    * **Python 3.7+**
    
-   The program was tested on Python 3.7 (Debian 10) and Python 3.8 (Ubuntu 20.04).
+   The program was tested in Python 3.7 (Debian 10) and Python 3.8 (Ubuntu 20.04).
  
 
 ### 2. Install the dependencies
@@ -48,7 +48,7 @@ The author is not liable for any damage and legal issues caused by this program 
 
 
 ### 4. Run, monitor and stop the program
-  The bash script [run_spideriment.sh](src/run_spideriment.sh) prepares the runtime environment and then **runs the program**:
+  The bash script [run_spideriment.sh](src/run_spideriment.sh) prepares the environment and then **runs the program**:
 
   ```
   ./run_spideriment.sh
@@ -60,6 +60,12 @@ The author is not liable for any damage and legal issues caused by this program 
   The crawler will finish its current batch (which can take really long – be patient!) and safely exit.
 
   You can also install a [systemd service](src/spideriment.service) to be able to run the crawler automatically on startup (on Linux distributions that use systemd).
+
+
+
+## Related projects
+* **[Spideriment Search Server](https://github.com/vitlabuda/spideriment_search_server)** – search server for use by frontends
+* **[Spideriment Web Search](https://github.com/vitlabuda/spideriment_web_search)** – web frontend (search engine)
 
 
 
