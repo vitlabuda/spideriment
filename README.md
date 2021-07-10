@@ -34,12 +34,10 @@ The author is not liable for any damage and legal issues caused by this program 
  
 
 ### 2. Install the dependencies
-   The program requires the ``pip`` and ``venv`` Python 3 packages to be installed.
-   
    On Debian/Ubuntu and their derivatives, execute the following:
    ```
    sudo apt update 
-   sudo apt install python3 python3-pip python3-venv
+   sudo apt install python3 python3-pip python3-venv python3-virtualenv virtualenv
    ```
 
 
